@@ -1,0 +1,28 @@
+CAPI=2:
+
+name : ::minimax:0
+
+filesets:
+  rtl:
+    files:
+      - rtl/minimax.vhd : {file_type : vhdlSource-2008}
+
+  tb:
+    files:
+      - rtl/minimax_tb.vhd : {file_type : vhdlSource-2008}
+
+targets:
+  default:
+    filesets : [rtl]
+    toplevel : minimax
+
+  sim:
+    default_tool : xsim
+    filesets: [rtl, tb]
+    parameters : [ROM]
+    toplevel: minimax_tb
+
+parameters:
+  ROM:
+    datatype : file
+    paramtype : generic
